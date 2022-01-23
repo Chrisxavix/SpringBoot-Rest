@@ -1,14 +1,20 @@
 package com.cursojava.curso.dao;
 
 import com.cursojava.curso.models.Usuario;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class UsuarioDaoImp implements UsuarioDao{
+@Repository
+/* Permite armar consultas hacia la base de datos */
+@Transactional
+public class UsuarioDaoImp implements UsuarioDao {
 
     @Override
     public List<Usuario> getUsuarios() {
         return null;
     }
-    
+
+
 }
