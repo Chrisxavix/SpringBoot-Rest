@@ -3,6 +3,7 @@ package com.cursojava.curso.controlers;
 import com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,9 +33,9 @@ public class UsuarioController {
         return null;
     }
 
-    @GetMapping("/eliminar")
-    public Usuario eliminar() {
-        return null;
+    @DeleteMapping("/user/{id}")
+    public void eliminar(@PathVariable Long id) {
+        userDao.eliminar(id);
     }
 
     @GetMapping("/buscar")

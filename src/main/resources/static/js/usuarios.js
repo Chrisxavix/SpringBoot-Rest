@@ -26,7 +26,7 @@ async function cargarUsuarios() {
       <td>${element.email}</td>
       <td>${element.telefono}</td>
       <td>
-          <a href="#" class="btn btn-danger btn-circle">
+          <a href="#" onclick="eliminarUsuario(${element.id})" class="btn btn-danger btn-circle">
               <i class="fas fa-trash"></i>
           </a>
       </td>
@@ -36,4 +36,15 @@ async function cargarUsuarios() {
   } );
   console.log(listadoHtml, 'listadoHtml');
   document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
+}
+
+async function eliminarUsuario(id) {
+  const request = await fetch('http://localhost:8080/user/' + id, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  });
+  cargarUsuarios();
 }
