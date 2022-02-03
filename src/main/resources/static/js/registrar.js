@@ -1,9 +1,8 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
-
     console.log("Usuarios.....");
-    $('#registrar');
-  });
+    getId();
+ });
 
 function getId() {
     let nombre = document.getElementById('txtNombre').value;
