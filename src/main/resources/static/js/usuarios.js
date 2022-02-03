@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
 
+  console.log("Usuarios.....");
   cargarUsuarios();
   $('#usuarios').DataTable();
 });

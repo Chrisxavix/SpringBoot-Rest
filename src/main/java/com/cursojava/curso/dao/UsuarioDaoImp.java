@@ -31,5 +31,9 @@ public class UsuarioDaoImp implements UsuarioDao {
         entityManager.remove(user);
     }
 
+    @Override
+    public void agregar(Usuario user) {
+        entityManager.merge(user);
+    }
 
 }
