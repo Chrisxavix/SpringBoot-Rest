@@ -12,4 +12,6 @@ public interface UsuarioDao {
     void eliminar(Long id);
 
     void agregar(Usuario user);
+
+    boolean verificarMailUser(Usuario user);
 }

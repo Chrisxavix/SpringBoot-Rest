@@ -1,17 +1,22 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
-    console.log("Usuarios.....");
-    getId();
- });
-
-function getId() {
-    let nombre = document.getElementById('txtNombre').value;
-    console.log(nombre, '??????');
-}
+    // ON READY
+});
 
 async function registrarUsuario() {
     let datos = {};
-    datos.nombre = "";
+    datos.nombre = document.getElementById('txtNombre').value;
+    datos.apellido = document.getElementById('txtApellido').value;
+    datos.email = document.getElementById('txtMail').value;
+    datos.telefono = document.getElementById('txtTelefono').value;
+    datos.password = document.getElementById('txtPassword').value;
+    datos.repeatPassword = document.getElementById('txtRepeatPassword').value;
+
+    if(datos.password != datos.repeatPassword) {
+        console.log("Las contraseñas no coinciden");
+        return;
+    }
+
     const request = await fetch('http://localhost:8080/user', {
         method: 'POST',
         headers: {
@@ -20,30 +25,8 @@ async function registrarUsuario() {
         },
         body: JSON.stringify(datos)
     });
+    const content = await request.json();
+    console.log(content);
 
-
-    const usuarios = await request.json();
-
-    console.log(usuarios, "usuariosResponse");
-
-    let listadoHtml = '';
-
-    usuarios.forEach(element => {
-        let usuarioHtml = `<tr>
-        <td>${element.id}</td>
-        <td>${element.nombre}</td>
-        <td>${element.email}</td>
-        <td>${element.telefono}</td>
-        <td>
-            <a href="#" onclick="eliminarUsuario(${element.id})" class="btn btn-danger btn-circle">
-                <i class="fas fa-trash"></i>
-            </a>
-        </td>
-    </tr>`;
-        //listadoHtml+= usuarioHtml;
-        listadoHtml = listadoHtml + usuarioHtml;
-    });
-    console.log(listadoHtml, 'listadoHtml');
-    document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 }
 
