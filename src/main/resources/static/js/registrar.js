@@ -13,7 +13,7 @@ async function registrarUsuario() {
     datos.repeatPassword = document.getElementById('txtRepeatPassword').value;
 
     if(datos.password != datos.repeatPassword) {
-        console.log("Las contraseñas no coinciden");
+        alert("Las contraseñas no coinciden");
         return;
     }
 
@@ -25,8 +25,7 @@ async function registrarUsuario() {
         },
         body: JSON.stringify(datos)
     });
-    const content = await request.json();
-    console.log(content);
-
+    alert("La cuenta fue creada con exito!");
+    window.location.href = 'login.html'
 }
 
