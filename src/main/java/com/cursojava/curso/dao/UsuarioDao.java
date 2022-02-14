@@ -13,5 +13,5 @@ public interface UsuarioDao {
 
     void agregar(Usuario user);
 
-    boolean verificarMailUser(Usuario user);
+    Usuario obtenerUsuarioPorCredenciales(Usuario user);
 }
