@@ -18,10 +18,12 @@ public class AuthController {
     private JWTutil jwtUtil;
 
     @PostMapping("/login")
-    public Usuario login(@RequestBody Usuario user) {
-        /* RequestBody: convierte el Json que llega a un objeto Usuario  */
-        /*if(userDao.obtenerUsuarioPorCredenciales(user)) {
-            jwtUtil.create(user.getId(), user);
+    public String login(@RequestBody Usuario user) {
+        /* RequestBody: convierte el Json que llega a un objeto Usuario */
+
+        /*Usuario userLogueado = userDao.obtenerUsuarioPorCredenciales(user);
+        if(userLogueado != null) {
+            jwtUtil.create(userLogueado.getId(), userLogueado.getEmail());
             return "yes";
         } else {
             return "error";
