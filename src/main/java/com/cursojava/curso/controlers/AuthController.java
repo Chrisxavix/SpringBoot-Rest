@@ -21,13 +21,13 @@ public class AuthController {
     public String login(@RequestBody Usuario user) {
         /* RequestBody: convierte el Json que llega a un objeto Usuario */
 
-        /*Usuario userLogueado = userDao.obtenerUsuarioPorCredenciales(user);
+        Usuario userLogueado = userDao.obtenerUsuarioPorCredenciales(user);
         if(userLogueado != null) {
-            jwtUtil.create(userLogueado.getId(), userLogueado.getEmail());
-            return "yes";
+            /* En base a los dos elementos enviados de tipo String nos devuelve un token */
+            String tokenJWT = jwtUtil.create(String.valueOf(userLogueado.getId()), userLogueado.getEmail());
+            return tokenJWT;
         } else {
             return "error";
-        }*/
-        return null;
+        }
     }
 }
